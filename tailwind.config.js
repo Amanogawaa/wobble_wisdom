@@ -3,6 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        primary: "VT323",
+      },
       colors: {
         transparent: "transparent",
         current: "currentColor",

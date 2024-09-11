@@ -1,0 +1,18 @@
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+
+// ?firebase config
+const firebaseConfig = {
+  apiKey: "AIzaSyCOaIX-LgxEkP2JGFiNzs0mdmR5cYHN5ZI",
+  authDomain: "wobble-wisdom-a40fd.firebaseapp.com",
+  projectId: "wobble-wisdom-a40fd",
+  storageBucket: "wobble-wisdom-a40fd.appspot.com",
+  messagingSenderId: "274274329311",
+  appId: "1:274274329311:web:0e0dbe9134e08aa82c7f6a",
+};
+
+// ?initialize firebase app
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+export { db };
