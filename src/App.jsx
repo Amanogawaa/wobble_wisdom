@@ -6,6 +6,7 @@ function App() {
 
   const fetchAdvice = async () => {
     setLoading(true);
+
     try {
       const response = await fetch("https://api.adviceslip.com/advice");
       const data = await response.json();
@@ -25,15 +26,21 @@ function App() {
   return (
     <>
       <main className="bg-dark-100 h-screen w-full">
-        <h1 className="text-dark-600 ">
-          {loading ? <p>Loading...</p> : <p>{advice}</p>}
-        </h1>
-        <button
-          onClick={fetchAdvice}
-          className="border border-dark-500 text-dark-600"
-        >
-          Generate Advice
-        </button>
+        <div className="flex justify-center items-center h-full flex-col gap-4">
+          <h1 className="text-dark-600 text-3xl">
+            {loading ? (
+              <span className="loading__anim"></span>
+            ) : (
+              <p>{advice}</p>
+            )}
+          </h1>
+          <button
+            onClick={fetchAdvice}
+            className="border border-primary_dark-200 bg-primary_dark-200 text-white  px-4 py-2 rounded-lg hover:bg-primary_dark-400"
+          >
+            Generate Advice
+          </button>
+        </div>
       </main>
     </>
   );
