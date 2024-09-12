@@ -6,7 +6,6 @@ import Favorite from "./Favorite";
 const Advice = () => {
   const [advice, setAdvice] = useState("");
   const [loading, setLoading] = useState(true);
-  const [favorite, setFavorite] = useState("");
 
   const addToFavorite = async () => {
     if (advice !== "") {
@@ -19,14 +18,12 @@ const Advice = () => {
       } catch {
         console.log("Failed to add advice to favorites");
       }
-      setFavorite("");
     }
   };
 
   const fetchAdvice = async () => {
-    setLoading(true);
-
     try {
+      setLoading(true);
       const response = await fetch("https://api.adviceslip.com/advice");
       const data = await response.json();
       console.log(data);
