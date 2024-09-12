@@ -63,7 +63,21 @@ const Advice = () => {
               onClick={addToFavorite}
               className="border border-primary_dark-200 bg-primary_dark-200 text-white  px-4 py-2 rounded-lg hover:bg-primary_dark-400 font-primary tracking-widest text-lg"
             >
-              Favorites
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="#ebef0b"
+                stroke="#ebef0b"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-star"
+              >
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+              <span className="sr-only">Favorite</span>
             </button>
           </div>
         </div>
