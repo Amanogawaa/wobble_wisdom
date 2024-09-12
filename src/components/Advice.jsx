@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../config/Firebase";
 import { addDoc, collection } from "firebase/firestore";
-import Favorite from "./Favorite";
+import { Star } from "lucide-react";
 
 const Advice = () => {
   const [advice, setAdvice] = useState("");
   const [loading, setLoading] = useState(true);
+  const [favorite, setFavorite] = useState(false);
 
   const addToFavorite = async () => {
     if (advice !== "") {
@@ -15,6 +16,7 @@ const Advice = () => {
           completed: false,
         });
         console.log("Favorite added to Firestore");
+        setFavorite(true);
       } catch {
         console.log("Failed to add advice to favorites");
       }
@@ -47,7 +49,7 @@ const Advice = () => {
             {loading ? (
               <span className="loading__anim"></span>
             ) : (
-              <p className="font-primary text-dark-600 text-base md:text-3xl break-words whitespace-break-spaces text-center">
+              <p className="font-primary text-dark-600 sm:text-lg md:text-4xl break-words whitespace-break-spaces text-center">
                 {advice}
               </p>
             )}
@@ -55,34 +57,26 @@ const Advice = () => {
           <div className="flex w-full justify-center items-center gap-2">
             <button
               onClick={fetchAdvice}
-              className="border border-primary_dark-200 bg-primary_dark-200 text-white  px-4 py-2 rounded-lg hover:bg-primary_dark-400 font-primary tracking-widest text-lg"
+              className="border border-primary_dark-200 bg-primary_dark-200 text-white  px-4 py-2 rounded-md hover:bg-primary_dark-400 font-secondary tracking-normal text-lg"
             >
               Generate Advice
             </button>
             <button
               onClick={addToFavorite}
-              className="border border-primary_dark-200 bg-primary_dark-200 text-white  px-4 py-2 rounded-lg hover:bg-primary_dark-400 font-primary tracking-widest text-lg"
+              className="border border-dark-600   text-white px-4 py-2 rounded-lg hover:bg-primary_dark-200 hover:border-primary_dark-200 font-primary tracking-widest text-lg"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="#ebef0b"
-                stroke="#ebef0b"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-star"
-              >
-                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-              </svg>
+              <Star />
               <span className="sr-only">Favorite</span>
             </button>
           </div>
         </div>
-        <div>
-          <Favorite />
+        <div className="absolute top-3.5 right-3.5">
+          <a
+            href="/favorites"
+            className="border border-dark-600 text-white px-4 py-2 rounded-lg hover:bg-primary_dark-200 hover:border-primary_dark-200 font-primary tracking-widest text-lg"
+          >
+            Favorites
+          </a>
         </div>
       </main>
     </>

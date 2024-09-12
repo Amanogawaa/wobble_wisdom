@@ -7,6 +7,7 @@ import {
   doc,
 } from "firebase/firestore";
 import { db } from "../config/Firebase";
+import { ArrowLeftIcon, Trash } from "lucide-react";
 
 const Favorite = () => {
   const [favorites, setFavorite] = useState([]);
@@ -43,7 +44,7 @@ const Favorite = () => {
   const favoriteList = favorites.map((favorite) => (
     <div
       key={favorite.id}
-      className="border border-primary_dark-300 bg-primary_dark-200 rounded-lg flex justify-center items-center p-5 shadow-primary_dark-200 shadow-md min-h-80 max-h-96 h-full relative"
+      className="favorite_card__anim border border-dark-300 bg-dark-200 rounded-lg flex justify-center items-center p-5 shadow-dark-200 shadow-md min-h-80 max-h-96 h-full relative"
     >
       <li className="list-none break-words text-base md:text-2xl text-center text-white">
         {favorite.favorite}
@@ -52,21 +53,7 @@ const Favorite = () => {
         onClick={() => deleteFavorite(favorite.id)}
         className="absolute -right-3.5 -top-3 bg-rose-500 rounded-full p-1"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="white"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="lucide lucide-x"
-        >
-          <path d="M18 6 6 18" />
-          <path d="m6 6 12 12" />
-        </svg>
+        <Trash className="text-white h-4 w-4" />
         <span className="sr-only">Delete</span>
       </button>
     </div>
@@ -74,8 +61,12 @@ const Favorite = () => {
 
   return (
     <>
-      <main className="bg-dark-100 h-screen w-full">
-        <div className="grid sm:grid-col-1 lg:grid-cols-4 gap-3 p-10  ">
+      <main className="bg-dark-100 h-screen w-full ">
+        <a href="/">
+          <ArrowLeftIcon className="text-white absolute top-5 left-5 " />
+        </a>
+
+        <div className="grid sm:grid-col-1 lg:grid-cols-4 gap-3 px-10 py-16">
           {favoriteList}
         </div>
       </main>

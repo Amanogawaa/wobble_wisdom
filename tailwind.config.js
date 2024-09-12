@@ -5,6 +5,7 @@ export default {
     extend: {
       fontFamily: {
         primary: "VT323",
+        secondary: "Poppins",
       },
       colors: {
         transparent: "transparent",
